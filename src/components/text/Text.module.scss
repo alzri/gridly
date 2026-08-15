@@ -1,0 +1,33 @@
+@use '../../styles/mixins' as *;
+
+.h1 {
+  @include text-styles(heading, h1);
+}
+
+.h2 {
+  @include text-styles(heading, h2);
+}
+
+.paragraph-s {
+  @include text-styles(paragraph, s);
+}
+
+.paragraph-m {
+  @include text-styles(paragraph, m);
+}
+
+.primary {
+  color: var(--content-primary);
+}
+
+.secondary {
+  color: var(--content-secondary);
+}
+
+.active {
+  color: var(--active-state);
+}
+
+.inactive {
+  color: var(--inactive-state);
+}
