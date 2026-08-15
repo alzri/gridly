@@ -40,8 +40,8 @@
   --background-tertiary: #393939;
 
   /* text color */
-  --text-primary: #393939;
-  --text-secondary: #858585;
+  --content-primary: #393939;
+  --content-secondary: #858585;
 
   /* content color */
   --active-state: #5d942f;
@@ -49,6 +49,34 @@
   --inactive-state: #797d83;
   --inactive-state-light: #a9abae;
   --border-color: #f1f1f1;
+
+  /* font family */
+  --font-family-primary: inter, roboto;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --typography-heading-h1-font-family: var(--font-family-primary);
+  --typography-heading-h1-font-size: 1.44rem;
+  --typography-heading-h1-line-height: 1.44rem;
+  --typography-heading-h1-letter-spacing: -0, 04em;
+
+  --typography-heading-h2-font-family: var(--font-family-primary);
+  --typography-heading-h2-font-size: 1.19rem;
+  --typography-heading-h2-line-height: 1.19rem;
+  --typography-heading-h2-letter-spacing: -0.03em;
+
+  --typography-paragraph-s-font-family: var(--font-family-primary);
+  --typography-paragraph-s-font-size: 1.13rem;
+  --typography-paragraph-s-line-height: 1.113rem;
+  --typography-paragraph-s-letter-spacing: -0.02em;
+
+  --typography-paragraph-m-font-family: var(--font-family-primary);
+  --typography-paragraph-m-font-size: 1.19rem;
+  --typography-paragraph-m-line-height: 1.19rem;
+  --typography-paragraph-m-letter-spacing: -0.03em;
 }
 
 /* @media (prefers-color-scheme: dark) {
