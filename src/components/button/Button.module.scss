@@ -1,0 +1,39 @@
+.button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-family-primary);
+  font-size: var(--typography-paragraph-s-size);
+  line-height: var(--typography-paragraph-s-line-height);
+  letter-spacing: var(--typography-paragraph-s-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+  width: fit-content;
+  background-color: var(--background-tertiary);
+  color: var(--text-secondary);
+
+  &:hover {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+  }
+
+  &.delete {
+    background-color: var(--delete);
+    color: var(--text-secondary);
+
+    &:hover {
+      background-color: #ba1616;
+    }
+  }
+
+  &.login {
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: var(--background-tertiary);
+      color: var(--text-secondary);
+    }
+  }
+}
