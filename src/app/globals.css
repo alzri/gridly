@@ -49,6 +49,8 @@
   /* content color */
   --delete: #dd1414;
   --edit: #393939;
+  --import: #5d942f;
+  --export: #2e39c5;
   --active-state: #5d942f;
   --inactive-state: #797d83;
   --border-color: #f1f1f1;

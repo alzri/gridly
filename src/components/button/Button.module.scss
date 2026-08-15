@@ -27,13 +27,21 @@
     }
   }
 
-  &.login {
-    background-color: var(--background-secondary);
-    color: var(--text-primary);
+  &.import {
+    background-color: var(--import);
+    color: var(--text-secondary);
 
     &:hover {
-      background-color: var(--background-tertiary);
-      color: var(--text-secondary);
+      background-color: #9bb784;
+    }
+  }
+
+  &.export {
+    background-color: var(--export);
+    color: var(--text-secondary);
+
+    &:hover {
+      background-color: #8389cf;
     }
   }
 }

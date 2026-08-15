@@ -1,4 +1,4 @@
-export type ButtonVariant = 'submit' | 'delete' | 'edit' | 'login' | 'register';
+export type ButtonVariant = 'submit' | 'delete' | 'edit' | 'export' | 'import';
 
 export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: ButtonVariant;
