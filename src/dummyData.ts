@@ -3,7 +3,7 @@ import type { ITableRow } from '@/components/table/Table.types';
 export const dummyData: ITableRow[] = [
   {
     msisdn: '12343',
-    account: 1,
+    account: '1',
     region: 'Zagreb',
     branch: 'Zagreb - glavni kolodvor',
     name: 'Pero',
@@ -17,11 +17,11 @@ export const dummyData: ITableRow[] = [
     period: '202701',
     simNumber: '098765432',
     privateBill: 'N',
-    imsi: 3422144,
+    imsi: '3422144',
   },
   {
     msisdn: '1233343',
-    account: 27679957,
+    account: '27679957',
     region: 'Zagreb',
     branch: 'Zagreb - istok',
     name: 'Ana',
@@ -35,7 +35,7 @@ export const dummyData: ITableRow[] = [
     period: '202605',
     simNumber: '0987654535',
     privateBill: 'Y',
-    imsi: 3422165,
+    imsi: '3422165',
   },
 ];
 

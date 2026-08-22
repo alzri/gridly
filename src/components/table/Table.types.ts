@@ -1,64 +1,80 @@
-export type TariffType = 'SPVH Mini' | 'SPVH Extra' | 'SPVH Premium' | 'MI Best' | 'MI Top';
-
 export type RawUserRow = {
-  'ime i prezime (u slučaju privatnog računa)': string;
-  'account/username': string;
-  'Account/Contract': number;
-  Regija: string;
-  Podružnica: string;
-  MSISDN: string;
-  Ime: string;
-  Prezime: string;
-  'Tarifni model': TariffType;
-  'skraćeni broj(Voice)': string;
-  'status pretplatnika': string;
-  'VPN profil': string;
-  'MCD/CP - broj preostalih mjesećnih nadnada': number;
-  'mjesec isteka MCD/CP': string;
+  'MSISDN (Voice)': string;
+  'Account/Contract': string;
+  REGIJA: string;
+  PODRUŽNICA: string;
+  IME: string;
+  PREZIME: string;
+  'Ime i prezime (u slučaju privatnog računa)': string;
+  'Tarifni model': string;
+  'skraćeni broj (Voice)': string;
+  'Status pretplatnika': string;
+  'VPN Profil': string;
+  'MCD/CP - broj preosatlih mjesečnih naknada': number;
+  'mjesec isteka MCD/CP ': string | number;
   'Broj Sim kartice': string;
   'VPN Private bill (Y/N)': string;
-  'Imsi Number': number;
+  'Imsi Number': string;
 };
 
 export type ITableRow = {
   msisdn: string;
-  account: number;
+  account: string;
   region: string;
   branch: string;
   name: string;
   surname: string;
   fullName?: string;
-  tariff: TariffType;
+  tariff: string;
   voice: string;
   status: string;
   profile: string;
   remainingFee: number;
-  period: string;
+  period: string | number;
   simNumber: string;
   privateBill: string;
-  imsi: number;
+  imsi: string;
 };
 
 export const mapUsers = (rawRows: RawUserRow[]): ITableRow[] => {
   return rawRows.map((row) => ({
-    fullName: row['ime i prezime (u slučaju privatnog računa)'],
+    fullName: row['Ime i prezime (u slučaju privatnog računa)'],
+
     account: row['Account/Contract'],
-    region: row['Regija'],
-    branch: row['Podružnica'],
-    msisdn: row['MSISDN'],
-    name: row['Ime'],
-    surname: row['Prezime'],
-    tariff: row['Tarifni model'] as TariffType,
-    voice: row['skraćeni broj(Voice)'],
-    status: row['status pretplatnika'],
-    profile: row['VPN profil'],
-    remainingFee: row['MCD/CP - broj preostalih mjesećnih nadnada'],
-    period: row['mjesec isteka MCD/CP'],
+
+    region: row.REGIJA,
+
+    branch: row.PODRUŽNICA,
+
+    msisdn: row['MSISDN (Voice)'],
+
+    name: row.IME,
+
+    surname: row.PREZIME,
+
+    tariff: row['Tarifni model'],
+
+    voice: row['skraćeni broj (Voice)'],
+
+    status: row['Status pretplatnika'],
+
+    profile: row['VPN Profil'],
+
+    remainingFee: row['MCD/CP - broj preosatlih mjesečnih naknada'],
+
+    period: row['mjesec isteka MCD/CP '],
+
     simNumber: row['Broj Sim kartice'],
+
     privateBill: row['VPN Private bill (Y/N)'],
+
     imsi: row['Imsi Number'],
   }));
 };
+
+export interface ITableProps {
+  data: ITableRow[];
+}
 
 export interface ITableProps {
   data: ITableRow[];
