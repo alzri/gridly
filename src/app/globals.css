@@ -36,7 +36,7 @@
 :root {
   /* background color */
   --background-primary: #fff;
-  --background-secondary: #f7f7f7;
+  --background-secondary: #e4e4e4;
   --background-tertiary: #393939;
   --background-active-state: #9bb784;
   --background-inactive-state: #a9abae;
@@ -74,9 +74,9 @@
   --typography-heading-h2-letter-spacing: -0.03em;
 
   --typography-paragraph-s-font-family: var(--font-family-primary);
-  --typography-paragraph-s-font-size: 1.13rem;
-  --typography-paragraph-s-line-height: 1.113rem;
-  --typography-paragraph-s-letter-spacing: -0.02em;
+  --typography-paragraph-s-font-size: 1rem;
+  --typography-paragraph-s-line-height: 1rem;
+  --typography-paragraph-s-letter-spacing: -0.007em;
 
   --typography-paragraph-m-font-family: var(--font-family-primary);
   --typography-paragraph-m-font-size: 1.19rem;
