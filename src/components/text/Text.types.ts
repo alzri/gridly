@@ -6,7 +6,7 @@ export type TextSize = 'h1' | 'h2' | 'paragraph-s' | 'paragraph-m' | 'paragraph-
 
 export type TextColor = 'primary' | 'secondary' | 'tertiary' | 'active' | 'inactive';
 
-export type TextWeight = '400' | '500' | '600' | '700' | '900';
+export type TextWeight = 'regular' | 'medium' | 'semibold' | 'bold' | 'black';
 
 export interface ITextProps extends React.HTMLAttributes<HTMLElement> {
   component: TextComponent;

@@ -6,13 +6,12 @@ export const Text = ({
   component = 'p',
   size,
   color = 'primary',
-  weight = '400',
   children,
   className,
   ...rest
 }: ITextProps) => {
   const TagName = component;
-  const classNames = clsx('text', className, styles[size], styles[color], styles[weight]);
+  const classNames = clsx('text', className, styles[size], styles[color]);
   return (
     <TagName className={classNames} {...rest}>
       {children}
