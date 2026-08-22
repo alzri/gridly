@@ -36,19 +36,52 @@
 :root {
   /* background color */
   --background-primary: #fff;
-  --background-secondary: #f6f6f6;
+  --background-secondary: #e4e4e4;
   --background-tertiary: #393939;
+  --background-active-state: #9bb784;
+  --background-inactive-state: #a9abae;
 
   /* text color */
   --text-primary: #393939;
-  --text-secondary: #858585;
+  --text-secondary: #f1f1f1;
+  --text-tertiary: #858585;
 
   /* content color */
+  --delete: #dd1414;
+  --edit: #393939;
+  --import: #5d942f;
+  --export: #2e39c5;
   --active-state: #5d942f;
-  --active-state-light: #9bb784;
   --inactive-state: #797d83;
-  --inactive-state-light: #a9abae;
   --border-color: #f1f1f1;
+
+  /* font family */
+  --font-family-primary: inter, roboto;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --typography-heading-h1-font-family: var(--font-family-primary);
+  --typography-heading-h1-font-size: 1.44rem;
+  --typography-heading-h1-line-height: 1.44rem;
+  --typography-heading-h1-letter-spacing: -0, 04em;
+
+  --typography-heading-h2-font-family: var(--font-family-primary);
+  --typography-heading-h2-font-size: 1.19rem;
+  --typography-heading-h2-line-height: 1.19rem;
+  --typography-heading-h2-letter-spacing: -0.03em;
+
+  --typography-paragraph-s-font-family: var(--font-family-primary);
+  --typography-paragraph-s-font-size: 1rem;
+  --typography-paragraph-s-line-height: 1rem;
+  --typography-paragraph-s-letter-spacing: -0.007em;
+
+  --typography-paragraph-m-font-family: var(--font-family-primary);
+  --typography-paragraph-m-font-size: 1.19rem;
+  --typography-paragraph-m-line-height: 1.19rem;
+  --typography-paragraph-m-letter-spacing: -0.03em;
 }
 
 /* @media (prefers-color-scheme: dark) {

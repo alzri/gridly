@@ -1,0 +1,42 @@
+@use './variables' as *;
+
+/* text component mixins */
+
+@mixin text-styles($type, $level) {
+  font-family: var(--typography-#{$type}-#{$level}-font-family);
+  font-size: var(--typography-#{$type}-#{$level}-font-size);
+  font-weight: var(--typography-#{$type}-#{$level}-font-weight);
+  line-height: var(--typography-#{$type}-#{$level}-line-height);
+}
+
+/* media queries */
+
+@mixin for-medium-screens {
+  @media screen and (width < $breakpoint-m) {
+    @content;
+  }
+}
+
+@mixin for-smaller-screens {
+  @media screen and (width < $breakpoint-s) {
+    @content;
+  }
+}
+
+@mixin responsive-spacings($map) {
+  @each $property, $token in $map {
+    #{$property}: var(--spacing-screen-l-fluid-#{$token});
+  }
+
+  @media (max-width: $breakpoint-m) {
+    @each $property, $token in $map {
+      #{$property}: var(--spacing-screen-m-fluid-#{$token});
+    }
+  }
+
+  @media (max-width: $breakpoint-s) {
+    @each $property, $token in $map {
+      #{$property}: var(--spacing-screen-s-fluid-#{$token});
+    }
+  }
+}
