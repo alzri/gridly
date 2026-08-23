@@ -1,66 +1,87 @@
-import Image from 'next/image';
+'use client';
+import { Text } from '@/components/text/Text';
 import styles from './page.module.css';
+import { Table } from '@/components/table/Table';
+import { Button } from '@/components/button/Button';
+import { useEffect, useRef, useState } from 'react';
+import { importExcel } from '@/utils/excel/importExcel';
+import { exportExcel } from '@/utils/excel/exportExcel';
+import { getUsers, saveUsers } from '@/utils/supabase/users';
+import { ITableRow } from '@/components/table/Table.types';
 
 export default function Home() {
+  const [data, setData] = useState<ITableRow[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const loadUsers = async () => {
+      try {
+        const users = await getUsers();
+
+        setData(users);
+      } catch (error) {
+        console.error('Error loading users:', error);
+      }
+    };
+
+    loadUsers();
+  }, []);
+
+  const handleImport = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+
+    if (!file) return;
+
+    try {
+      const importedData = await importExcel(file);
+      await saveUsers(importedData);
+      setData(importedData);
+    } catch (error) {
+      console.error('Error importing Excel file:', error);
+    }
+  };
+
+  const handleExport = () => {
+    try {
+      exportExcel(data);
+    } catch (error) {
+      console.error('Error exporting Excel file:', error);
+    }
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
         <div className={styles.intro}>
-          <h1>
-            To get started, edit the <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <Text size="h2" weight="bold" color="primary" component="h1">
+            Welcome to Gridly!
+          </Text>
+
+          <div className={styles['CTA-buttons']}>
+            <Button variant="import" onClick={handleImport}>
+              Import data
+            </Button>
+
+            <Button variant="export" onClick={handleExport}>
+              Export data
+            </Button>
+          </div>
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".xlsx,.xls"
+            onChange={handleFileChange}
+            hidden
+          />
+
+          <div>
+            <Table data={data} />
+          </div>
         </div>
       </main>
     </div>
