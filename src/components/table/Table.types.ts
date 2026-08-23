@@ -18,6 +18,7 @@ export type RawUserRow = {
 };
 
 export type ITableRow = {
+  id?: number;
   msisdn: string;
   account: string;
   region: string;
@@ -72,10 +73,28 @@ export const mapUsers = (rawRows: RawUserRow[]): ITableRow[] => {
   }));
 };
 
-export interface ITableProps {
-  data: ITableRow[];
-}
+export type SupabaseUser = {
+  id: number;
+  msisdn: string;
+  account: string;
+  region: string;
+  branch: string;
+  name: string;
+  surname: string;
+  full_name: string | null;
+  tariff: string;
+  voice: string;
+  status: string;
+  profile: string;
+  remaining_fee: number;
+  period: string | number;
+  sim_number: string;
+  private_bill: string;
+  imsi: string;
+};
 
 export interface ITableProps {
   data: ITableRow[];
+  onEdit: (user: ITableRow) => void;
+  onDelete: (id: number) => void;
 }

@@ -6,12 +6,14 @@ import { Button } from '@/components/button/Button';
 import { useEffect, useRef, useState } from 'react';
 import { importExcel } from '@/utils/excel/importExcel';
 import { exportExcel } from '@/utils/excel/exportExcel';
-import { getUsers, saveUsers } from '@/utils/supabase/users';
+import { getUsers, saveUsers, updateUser, deleteUser } from '@/utils/supabase/users';
 import { ITableRow } from '@/components/table/Table.types';
+import { EditUserModal } from '@/components/edit-user-modal/EditUserModal';
 
 export default function Home() {
   const [data, setData] = useState<ITableRow[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [editingUser, setEditingUser] = useState<ITableRow | null>(null);
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -38,8 +40,10 @@ export default function Home() {
 
     try {
       const importedData = await importExcel(file);
-      await saveUsers(importedData);
-      setData(importedData);
+
+      const savedData = await saveUsers(importedData);
+
+      setData(savedData);
     } catch (error) {
       console.error('Error importing Excel file:', error);
     }
@@ -53,6 +57,38 @@ export default function Home() {
     }
   };
 
+  const handleEdit = (user: ITableRow) => {
+    setEditingUser(user);
+  };
+
+  const handleSaveEdit = async (user: ITableRow) => {
+    if (user.id === undefined) {
+      console.error('Cannot update user without an id.');
+      return;
+    }
+
+    try {
+      const updatedUser = await updateUser(user.id, user);
+
+      setData((currentData) =>
+        currentData.map((item) => (item.id === updatedUser.id ? updatedUser : item))
+      );
+
+      setEditingUser(null);
+    } catch (error) {
+      console.error('Error updating user:', error);
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    try {
+      await deleteUser(id);
+
+      setData((currentData) => currentData.filter((row) => row.id !== id));
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -80,7 +116,14 @@ export default function Home() {
           />
 
           <div>
-            <Table data={data} />
+            <Table data={data} onEdit={handleEdit} onDelete={handleDelete} />
+            {editingUser && (
+              <EditUserModal
+                user={editingUser}
+                onSave={handleSaveEdit}
+                onClose={() => setEditingUser(null)}
+              />
+            )}
           </div>
         </div>
       </main>

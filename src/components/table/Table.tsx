@@ -1,8 +1,9 @@
 import type { ITableProps } from './Table.types';
 import { Text } from '../text/Text';
 import styles from './Table.module.scss';
+import { Button } from '../button/Button';
 
-export const Table = ({ data }: ITableProps) => {
+export const Table = ({ data, onEdit, onDelete }: ITableProps) => {
   return (
     <div className={styles.table}>
       <table>
@@ -24,11 +25,12 @@ export const Table = ({ data }: ITableProps) => {
             <th scope="col">IMSI number</th>
             <th scope="col">MCD/CP broj preostalih mjesečnih naknada</th>
             <th scope="col">Mjesec isteka MCD/CP</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody className={styles['table-data']}>
           {data.map((row) => (
-            <tr key={row.msisdn}>
+            <tr key={row.id}>
               <td>
                 <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'bold'}>
                   {row.msisdn}
@@ -118,6 +120,15 @@ export const Table = ({ data }: ITableProps) => {
                 <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'regular'}>
                   {row.period}
                 </Text>
+              </td>
+              <td>
+                <Button variant="edit" onClick={() => onEdit(row)}>
+                  Edit
+                </Button>
+
+                <Button variant="delete" onClick={() => row.id !== undefined && onDelete(row.id)}>
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
