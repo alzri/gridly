@@ -5,7 +5,6 @@
 @mixin text-styles($type, $level) {
   font-family: var(--typography-#{$type}-#{$level}-font-family);
   font-size: var(--typography-#{$type}-#{$level}-font-size);
-  font-weight: var(--typography-#{$type}-#{$level}-font-weight);
   line-height: var(--typography-#{$type}-#{$level}-line-height);
 }
 

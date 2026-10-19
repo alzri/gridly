@@ -6,6 +6,24 @@
   display: none;
 }
 
+.CTA-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+}
+
+.intro {
+  margin: 30px 20px;
+}
+
+.intro-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
 @media screen and (width <= 768px) {
   .desktop {
     display: none;

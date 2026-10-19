@@ -32,18 +32,18 @@ export const Table = ({ data, onEdit, onDelete }: ITableProps) => {
           {data.map((row) => (
             <tr key={row.id}>
               <td>
-                <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'bold'}>
+                <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'regular'}>
                   {row.msisdn}
                 </Text>
               </td>
               <td>
-                <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'bold'}>
+                <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'regular'}>
                   {row.name}
                 </Text>
               </td>
 
               <td>
-                <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'bold'}>
+                <Text component={'p'} size={'paragraph-s'} color={'primary'} weight={'regular'}>
                   {row.surname}
                 </Text>
               </td>
@@ -121,7 +121,7 @@ export const Table = ({ data, onEdit, onDelete }: ITableProps) => {
                   {row.period}
                 </Text>
               </td>
-              <td>
+              <td className={styles['table-actions']}>
                 <Button variant="edit" onClick={() => onEdit(row)}>
                   Edit
                 </Button>

@@ -93,18 +93,20 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.intro}>
-          <Text size="h2" weight="bold" color="primary" component="h1">
-            Welcome to Gridly!
-          </Text>
+          <div className={styles['intro-header']}>
+            <Text size="h2" weight="bold" color="primary" component="h1">
+              Welcome to Gridly!
+            </Text>
 
-          <div className={styles['CTA-buttons']}>
-            <Button variant="import" onClick={handleImport}>
-              Import data
-            </Button>
+            <div className={styles['CTA-buttons']}>
+              <Button variant="import" onClick={handleImport}>
+                Import data
+              </Button>
 
-            <Button variant="export" onClick={handleExport}>
-              Export data
-            </Button>
+              <Button variant="export" onClick={handleExport}>
+                Export data
+              </Button>
+            </div>
           </div>
 
           <input
